@@ -1,5 +1,6 @@
 package com.winter.dao;
 
+import com.winter.domain.QueryVo;
 import com.winter.domain.User;
 
 import java.util.List;
@@ -20,4 +21,6 @@ public interface UserDao {
     List<User> findByName(String username);
     //查询总用户数
     int findTotal();
+    //根据QueryVo查询条件查询用户
+    List<User> findUserByVo(QueryVo vo);
 }

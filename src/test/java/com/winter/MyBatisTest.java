@@ -1,6 +1,7 @@
 package com.winter;
 
 import com.winter.dao.UserDao;
+import com.winter.domain.QueryVo;
 import com.winter.domain.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -111,4 +112,19 @@ public class MyBatisTest {
         int total = userDao.findTotal();
         System.out.println(total);
     }
+
+    //测试使用QueryVo作为查询条件
+    @Test
+    public void testFindUserByVo(){
+        QueryVo vo = new QueryVo();
+        User user = new User();
+        user.setUsername("%王%");
+        vo.setUser(user);
+        //5.执行查询
+        List<User> users = userDao.findUserByVo(vo);
+        for (User user1 : users) {
+            System.out.println(user1);
+        }
+    }
+
 }

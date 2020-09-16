@@ -37,4 +37,8 @@
     <select id="findTotal" resultType="Integer">
         select count(userId) from user ;
     </select>
+<!--    根据QueryVo条件查询用户-->
+    <select id="findUserByVo" parameterType="com.winter.domain.QueryVo" resultType="com.winter.domain.User">
+        select *from user where username like #{user.username}
+    </select>
 </mapper>
